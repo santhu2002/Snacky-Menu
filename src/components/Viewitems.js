@@ -16,7 +16,7 @@ function Viewitems(props) {
     <>
       <div className="row">
         {items.map((item) => {
-          return <Card key={item._id}  title={item.title} price={item.price}/>;
+          return <Card key={item._id} item={item} title={item.title} price={item.price}/>;
         })}
       </div>
     </>

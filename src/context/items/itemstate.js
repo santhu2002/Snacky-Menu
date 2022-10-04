@@ -38,23 +38,24 @@ const Itemstate = (props) => {
     setitems(json);
   };
 
-  // const deleteitem = async(id)=>{
-  //   const response = await fetch(`${host}/api/items/deleteitem/${id}`, {
-  //     method: "DELETE",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   });
-  //   const json = await response.json();
-  //   console.log(json);
+  const deleteitem = async(id)=>{
+    const response = await fetch(`${host}/api/items/deleteitem/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    // eslint-disable-next-line
+    const json = await response.json();
+    // console.log(json);
 
-  //   //logic to delete note
-  //   const newitems = items.filter((item) => { return item._id !== id });
-  //   setitems(newitems);
+    //logic to delete note
+    const newitems = items.filter((item) => { return item._id !== id });
+    setitems(newitems);
 
-  // }
+  }
 
-  return <Itemcontext.Provider value={{items,getitems,additem}}>{props.children}</Itemcontext.Provider>;
+  return <Itemcontext.Provider value={{items,getitems,additem,deleteitem}}>{props.children}</Itemcontext.Provider>;
 };
 
 export default Itemstate;
