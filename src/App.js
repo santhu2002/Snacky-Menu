@@ -1,24 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Navbar from "./components/Navbar";
+import Mainpage from "./components/Mainpage";
+import Viewitems from "./components/Viewitems";
+import Itemstate from "./context/items/itemstate";
+import React, { useState } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
+  const [mode, setmode] = useState("light");
+  const swapcolor = () => {
+    if (mode === "light") {
+      setmode("dark");
+      document.body.style.backgroundColor = "black";
+    } else {
+      setmode("light");
+      document.body.style.backgroundColor = "white";
+    }
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Itemstate>
+      <Router>
+        <Navbar mode={mode} swapcolor={swapcolor} />
+        <div className="container">
+          <Switch>
+            <Route exact path="/">
+              <Mainpage />
+            </Route>
+            <Route exact path="/viewitems">
+              <Viewitems />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
+    </Itemstate>
   );
 }
 
