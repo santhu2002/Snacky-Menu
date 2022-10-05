@@ -12,7 +12,7 @@ function Card(props) {
       <div className="card-body">
         <h5 className="card-title">Title: {title}</h5>
         <p className="card-text">
-          Price: {price}
+          Price(&#8377;) : {price}
         </p>
         <Link to="/" className="btn btn-primary ">
           Edit
