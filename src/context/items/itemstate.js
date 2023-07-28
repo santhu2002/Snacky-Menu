@@ -38,6 +38,18 @@ const Itemstate = (props) => {
     setitems(json);
   };
 
+  // updating a note
+  // const updateitem= async(id)=>{
+  //   const response = await fetch(`${host}/api/items/updateitem/${id}`, {
+  //     method: "PUT",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   });
+  //   const json = await response.json()
+  // }
+
+  //deleting a note
   const deleteitem = async(id)=>{
     const response = await fetch(`${host}/api/items/deleteitem/${id}`, {
       method: "DELETE",

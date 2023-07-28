@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import Card from "./Card";
+import Viewitems from "./Viewitems"
 import itemcontext from "../context/items/itemcontext";
 
 function Mainpage(props) {
@@ -21,7 +22,8 @@ function Mainpage(props) {
   return (
     <>
       <div className="container  ">
-        <Card />
+        {/* <Card /> */}
+        <Viewitems/>
 
         <div
           className="modal fade"
