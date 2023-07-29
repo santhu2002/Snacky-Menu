@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import Mainpage from "./components/Mainpage";
 import Viewitems from "./components/Viewitems";
 import Itemstate from "./context/items/itemstate";
+import Calculater from "./components/Calculator"
 import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -28,6 +29,9 @@ function App() {
             </Route>
             <Route exact path="/viewitems">
               <Viewitems />
+            </Route>
+            <Route exact path="/calculator">
+              <Calculater />
             </Route>
           </Switch>
         </div>

@@ -32,6 +32,11 @@ function Navbar(props) {
                   View Items
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link active" to="/calculator">
+                  Calculator
+                </Link>
+              </li>
             </ul>
           </div>
         <button type="button" onClick={props.swapcolor} className="btn btn-secondary">Mode Change</button>
