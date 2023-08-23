@@ -13,6 +13,7 @@ const Itemstate = (props) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        'auth-token': localStorage.getItem('token')
       },
       body: JSON.stringify({ title, price})
     });
@@ -29,6 +30,7 @@ const Itemstate = (props) => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        'auth-token': localStorage.getItem('token')
       },
     });
 
@@ -55,6 +57,7 @@ const Itemstate = (props) => {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
+        'auth-token': localStorage.getItem('token')
       },
     });
     // eslint-disable-next-line

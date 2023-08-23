@@ -1,7 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link,useHistory } from "react-router-dom";
 
 function Navbar(props) {
+  let history = useHistory();
+  const handlelogout =()=>{
+    localStorage.removeItem('token');
+    props.setIsLoggedIn(false);
+    history.push('/signin')
+  }
   return (
     <>
       <nav className={`navbar navbar-expand-lg bg-${props.mode}`}>
@@ -38,6 +44,10 @@ function Navbar(props) {
                 </Link>
               </li>
             </ul>
+              {!props.isLoggedIn?<form className="d-flex">
+                    <Link role="button" to="/signin" className="btn btn-primary mx-1">Login</Link>
+                    <Link role="button" to="/signup"className="btn btn-primary mx-1">Sign up</Link>
+                </form>:<button onClick={handlelogout} className="btn btn-primary mx-1">Logout</button> }
           </div>
         <button type="button" onClick={props.swapcolor} className="btn btn-secondary">Mode Change</button>
         </div>

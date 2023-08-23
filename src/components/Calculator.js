@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useHistory } from 'react-router-dom';
 import itemcontext from "../context/items/itemcontext";
 
 function Calculator(props) {
@@ -40,10 +41,21 @@ function Calculator(props) {
     setPriceitems([])
   }
 
+  let history = useHistory();
   useEffect(() => {
-    getitems();
+    if(localStorage.getItem('token')){
+      getitems();
+  }
+  else{
+      history.push("/signin")
+  }
     // eslint-disable-next-line
   }, []);
+
+  // useEffect(() => {
+  //   getitems();
+  //   // eslint-disable-next-line
+  // }, []);
 
   useEffect(() => {
     calculate();
