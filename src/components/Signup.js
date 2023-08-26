@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+import itemcontext from "../context/items/itemcontext";
 
 const Signup = (props) => {
+    const context = useContext(itemcontext);
+    const {getuser } = context;
 
     const [credentials, setcredentials] = useState({ name: "", email: "", password: "", cpassword: "" })
 
@@ -30,6 +33,7 @@ const Signup = (props) => {
             localStorage.setItem('token',json.authtoken);
             history.push("/");
             alert("Account created Successfully ")
+            getuser();
             props.setIsLoggedIn(true);
 
         }

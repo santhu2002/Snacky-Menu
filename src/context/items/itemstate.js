@@ -5,6 +5,7 @@ const Itemstate = (props) => {
   const host = "http://localhost:5000";
   const itemsintial = [];
   const [items, setitems] = useState(itemsintial);
+  const [User, setUser] = useState("Guest");
 
   //Add an item
   const additem = async (title,price) => {
@@ -70,7 +71,21 @@ const Itemstate = (props) => {
 
   }
 
-  return <Itemcontext.Provider value={{items,getitems,additem,deleteitem}}>{props.children}</Itemcontext.Provider>;
+  const getuser = async () => {
+    //API Call(syntax gathered from internet)
+    const response = await fetch("http://localhost:5000/api/auth/getuser", {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'auth-token': localStorage.getItem('token')
+        },
+    });
+    const json = await response.json();
+    setUser(json.name);
+    // console.log(json)
+  }
+
+  return <Itemcontext.Provider value={{items,User,setUser,getitems,additem,deleteitem,getuser}}>{props.children}</Itemcontext.Provider>;
 };
 
 export default Itemstate;

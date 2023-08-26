@@ -1,11 +1,16 @@
-import React from "react";
+import React,{useContext} from "react";
 import { Link,useHistory } from "react-router-dom";
+import itemcontext from "../context/items/itemcontext";
 
 function Navbar(props) {
+  const context = useContext(itemcontext);
+  const {User,setUser} = context;
+
   let history = useHistory();
   const handlelogout =()=>{
     localStorage.removeItem('token');
     props.setIsLoggedIn(false);
+    setUser("Guest")
     history.push('/signin')
   }
   return (
@@ -49,6 +54,7 @@ function Navbar(props) {
                     <Link role="button" to="/signup"className="btn btn-primary mx-1">Sign up</Link>
                 </form>:<button onClick={handlelogout} className="btn btn-primary mx-1">Logout</button> }
           </div>
+          <h4 className="mx-4">Hello {User}</h4>
         <button type="button" onClick={props.swapcolor} className="btn btn-secondary">Mode Change</button>
         </div>
       </nav>

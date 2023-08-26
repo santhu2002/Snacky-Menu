@@ -1,7 +1,11 @@
-import React ,{useState}from "react";
+import React ,{useState,useContext}from "react";
 import { useHistory } from 'react-router-dom';
+import itemcontext from "../context/items/itemcontext";
 
 const Signin = (props) => {
+    const context = useContext(itemcontext);
+    const {getuser } = context;
+
     const [credentials, setcredentials] = useState({email:"",password:""})
 
     let history = useHistory();
@@ -27,6 +31,7 @@ const Signin = (props) => {
             //Save the authtoken and redirect
             localStorage.setItem('token',json.authtoken);
             alert("Logged in Successfully")
+            getuser();
             history.push("/");
             props.setIsLoggedIn(true);
             // window.location.reload();
