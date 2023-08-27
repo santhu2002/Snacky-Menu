@@ -85,7 +85,23 @@ const Itemstate = (props) => {
     // console.log(json)
   }
 
-  return <Itemcontext.Provider value={{items,User,setUser,getitems,additem,deleteitem,getuser}}>{props.children}</Itemcontext.Provider>;
+  //Add an bill
+  const addbill = async (totalprice,billdata) => {
+    //API Call(syntax gathered from internet)
+    const response = await fetch(`${host}/api/bills/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        'auth-token': localStorage.getItem('token')
+      },
+      body: JSON.stringify({ totalprice, billdata})
+    });
+
+    const json = await response.json();
+    console.log(json)
+  };
+
+  return <Itemcontext.Provider value={{items,User,setUser,getitems,additem,deleteitem,getuser,addbill}}>{props.children}</Itemcontext.Provider>;
 };
 
 export default Itemstate;

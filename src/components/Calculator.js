@@ -4,10 +4,16 @@ import itemcontext from "../context/items/itemcontext";
 
 function Calculator(props) {
   const context = useContext(itemcontext);
-  const { items, getitems } = context;
+  const { items, getitems,addbill } = context;
   const [Priceitems, setPriceitems] = useState([]);
   const [count, setcount] = useState(0);
   const [Totalprice, setTotalprice] = useState(0);
+
+
+  const Savebill =()=>{
+    addbill(Totalprice,Priceitems)
+  }
+
 
   const calc = (id) => {
     const SelectedItem = items.find((item) => item._id === id);
@@ -21,6 +27,7 @@ function Calculator(props) {
     };
     setcount(count + 1);
     setPriceitems([...Priceitems, data]);
+    document.getElementById("quantity").value=""
   };
 
   const handleDelete = (id) => {
@@ -133,6 +140,15 @@ function Calculator(props) {
           onClick={() => reset()}
         >
           Reset
+        </button>
+        )}
+        {Priceitems.length !== 0 && (
+          <button
+          type="button"
+          className="btn btn-primary mx-2"
+          onClick={() => Savebill()}
+        >
+          Save Bill
         </button>
         )}
         </div>
