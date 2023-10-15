@@ -1,10 +1,10 @@
-import React,{useContext} from "react";
+import React,{useContext,useEffect} from "react";
 import { Link,useHistory } from "react-router-dom";
 import itemcontext from "../context/items/itemcontext";
 
 function Navbar(props) {
   const context = useContext(itemcontext);
-  const {User,setUser} = context;
+  const {User,setUser,getuser} = context;
 
   let history = useHistory();
   const handlelogout =()=>{
@@ -13,6 +13,12 @@ function Navbar(props) {
     setUser("Guest")
     history.push('/signin')
   }
+
+  useEffect(() => {
+    getuser();
+    // eslint-disable-next-line
+  }, [])
+  
   return (
     <>
       <nav className={`navbar navbar-expand-lg bg-${props.mode}`}>
@@ -46,6 +52,11 @@ function Navbar(props) {
               <li className="nav-item">
                 <Link className="nav-link active" to="/calculator">
                   Calculator
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link active" to="/ViewBills">
+                  View Bills
                 </Link>
               </li>
             </ul>

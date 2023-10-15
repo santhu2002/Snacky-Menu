@@ -6,6 +6,7 @@ const Itemstate = (props) => {
   const itemsintial = [];
   const [items, setitems] = useState(itemsintial);
   const [User, setUser] = useState("Guest");
+  const [Bills,setBills]=useState([])
 
   //Add an item
   const additem = async (title,price) => {
@@ -101,7 +102,25 @@ const Itemstate = (props) => {
     console.log(json)
   };
 
-  return <Itemcontext.Provider value={{items,User,setUser,getitems,additem,deleteitem,getuser,addbill}}>{props.children}</Itemcontext.Provider>;
+  // GET all bills
+  const getbills = async () => {
+    //API Call(syntax gathered from internet)
+    const response = await fetch(`${host}/api/bills/allbills`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        'auth-token': localStorage.getItem('token')
+      },
+    });
+
+    const json = await response.json();
+    //This console prints in chrome console.
+    // console.log(json);
+
+    setBills(json);
+  };
+
+  return <Itemcontext.Provider value={{items,User,Bills,setUser,getitems,additem,deleteitem,getuser,addbill,getbills}}>{props.children}</Itemcontext.Provider>;
 };
 
 export default Itemstate;

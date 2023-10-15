@@ -6,6 +6,7 @@ import Itemstate from "./context/items/itemstate";
 import Calculater from "./components/Calculator"
 import Signin from "./components/Signin"
 import Signup from "./components/Signup"
+import ViewBills from "./components/ViewBills";
 
 import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -38,6 +39,9 @@ function App() {
             </Route>
             <Route exact path="/calculator">
               <Calculater />
+            </Route>
+            <Route exact path="/ViewBills">
+              <ViewBills />
             </Route>
             <Route exact path="/signup">
               <Signup setIsLoggedIn={setIsLoggedIn} />
