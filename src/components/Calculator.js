@@ -12,6 +12,8 @@ function Calculator(props) {
 
   const Savebill =()=>{
     addbill(Totalprice,Priceitems)
+    setcount(0);
+    setPriceitems([])
   }
 
 

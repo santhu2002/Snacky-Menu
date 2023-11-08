@@ -75,7 +75,7 @@ const Itemstate = (props) => {
 
   const getuser = async () => {
     //API Call(syntax gathered from internet)
-    const response = await fetch("${host}/api/auth/getuser", {
+    const response = await fetch(`${host}/api/auth/getuser`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
