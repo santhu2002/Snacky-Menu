@@ -2,7 +2,8 @@ import Itemcontext from "./itemcontext";
 import { useState } from "react";
 
 const Itemstate = (props) => {
-  const host = "http://localhost:5000";
+  // const host = "http://localhost:5000";
+  const host="https://snackymenu-backend.onrender.com"
   const itemsintial = [];
   const [items, setitems] = useState(itemsintial);
   const [User, setUser] = useState("Guest");
@@ -74,7 +75,7 @@ const Itemstate = (props) => {
 
   const getuser = async () => {
     //API Call(syntax gathered from internet)
-    const response = await fetch("http://localhost:5000/api/auth/getuser", {
+    const response = await fetch("${host}/api/auth/getuser", {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
