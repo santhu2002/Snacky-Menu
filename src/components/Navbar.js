@@ -15,7 +15,12 @@ function Navbar(props) {
   }
 
   useEffect(() => {
-    getuser();
+    if(localStorage.getItem('token')){
+      getuser();
+    }
+    else{
+      setUser("Guest")
+    }
     // eslint-disable-next-line
   }, [])
   
@@ -66,7 +71,7 @@ function Navbar(props) {
                 </form>:<button onClick={handlelogout} className="btn btn-primary mx-1">Logout</button> }
           </div>
           <h4 className="mx-4">Hello {User}</h4>
-        <button type="button" onClick={props.swapcolor} className="btn btn-secondary">Mode Change</button>
+          <button type="button" onClick={props.swapcolor} className="btn btn-secondary">Mode Change</button>
         </div>
       </nav>
 
